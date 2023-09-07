@@ -12,9 +12,7 @@ import Profile from "./pages/Profile"
 function App() {
 
   const userToken = getToken()
-  // console.log(userToken)
-  // sessionStorage.removeItem('userToken')
-
+  
   return (
     <>
       <Router>
@@ -27,7 +25,7 @@ function App() {
                 <Route path="/transaction" element={<History/>} />
                 <Route path="/listrik" element={<Listrik/>} />
                 <Route path="/akun" element={<Profile/>} />
-                <Route path="/" element={userToken ? <Navigate to="/home" /> : <Navigate to="/login" /> } />
+                <Route path="/" element={userToken != null ? <Navigate to="/home" /> : <Navigate to="/login" /> } />
             </Routes>
 
         </Main_layout>

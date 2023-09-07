@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import profile_user from "../assets/img/default_user.png"
 import bg_saldo from "../assets/img/bg_saldo.png"
-import Swal from "sweetalert2";
+import { getToken } from "../authorization/getToken";
+import { profileSlice } from "../redux/slices/profile";
+import { Navigate } from "react-router-dom";
+import isLogin from "../authorization/cek-login";
 
 const Headers = () => {
+    isLogin()
     const section_saldo = {
         backgroundImage: `url(${bg_saldo})`,
     }
     
+    const dispatch = useDispatch()
+    const userToken = getToken()
+    
+    useEffect(() => {
+        dispatch(profileSlice(userToken))    
+    }, [])
+
     const [isOpenEye, setIsOpenEye] = useState(false)
     
     function openEye(toogleEye) {
@@ -18,23 +29,16 @@ const Headers = () => {
     }
 
     const profile = useSelector((state) => state.profile.profile);
-    if (profile.data) {
-        sessionStorage.removeItem('userToken')
-        Swal.fire({
-            icon: 'warning',
-            title: 'Oops...',
-            text: profile.message,
-        })
-    }
     const balance = useSelector((state) => state.balance.balance);
     
     return (
         <>
+            {userToken &&
             <div className="flex h-36 bg-transparent justify-center">
                 <div className="grid grid-cols-2 gap-4 h-40 w-full lg:w-10/12 md:w-10/12 sm:w-10/12 mt-8">
                     <div className="bg-white">
                         <div>
-                            <img src={profile_user} alt="profile" className="h-14" />
+                            <img src={profile.profile_image != 'https://minio.nutech-integrasi.app/take-home-test/null' ? profile.profile_image : profile_user} alt="profile" className="h-14" />
                         </div>
                         <div className="h-auto mt-3 text-xl">Selamat datang,</div>
                         <div className="h-auto mt-5 font-bold text-2xl">{profile.first_name+' '+profile.last_name}</div>
@@ -62,6 +66,7 @@ const Headers = () => {
                     </div>
                 </div>
             </div>
+            }
         </>
     )
 }

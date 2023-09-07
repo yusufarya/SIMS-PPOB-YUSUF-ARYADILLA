@@ -15,7 +15,6 @@ const Login = () => {
     const navigate = useNavigate()
     
     const { isLoggedIn } = useSelector((state) => state.auth);
-    const { message } = useSelector((state) => state.message);
     
     const dispatch = useDispatch();
     
@@ -48,7 +47,7 @@ const Login = () => {
         dispatch(loginSlice(data))
         .unwrap()
         .then(() => {
-            toast.success(message, {
+            toast.success("Login berhasil", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -58,11 +57,22 @@ const Login = () => {
                 progress: undefined,
                 theme: "colored",
             });
-            navigate("/home");
-            window.location.reload();
+            setTimeout(() => {
+                navigate("/home");
+            }, 1500)
         })
-        .catch(() => {
-            console.log(message)
+        .catch((error) => {
+            toast.error("Username atau password salah", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            console.log(error)
         });
     }
 

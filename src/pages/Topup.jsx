@@ -83,7 +83,8 @@ const Topup = () => {
                     <div className="col-span-7">
                         <button
                             onClick={() => handleTopUp()}
-                            className="px-2 w-full rounded bg-red-500 text-white sm:text-sm sm:leading-6 h-9 mt-1.5"
+                            disabled={nominal != 0 ? '' : 'disabled'}
+                            className={`px-2 w-full rounded text-white sm:text-sm sm:leading-6 h-9 mt-1.5 ${nominal != 0 ? 'bg-red-500' : 'bg-red-300'}`}
                         > Top Up
                         </button>
                     </div>

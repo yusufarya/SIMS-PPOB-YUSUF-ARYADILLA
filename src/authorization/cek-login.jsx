@@ -9,7 +9,7 @@ const isLogin = () => {
     const loginToken = getToken()
     useEffect(() => {
         if(!loginToken) {
-            {location.pathname == '/login' ? navigate('/login') : ''}
+            {location.pathname == '/login' ? '' : navigate('/login')}
         } else {
             {location.pathname == '/login' ? navigate('/home') : ''}
         }

@@ -8,8 +8,11 @@ import { getToken } from "../authorization/getToken";
 import { useNavigate } from "react-router-dom";
 import { profileSlice } from "../redux/slices/profile";
 import Swal from "sweetalert2";
+import { loginSlice } from "../redux/slices/auth";
+import isLogin from "../authorization/cek-login";
 
 const Profile = () => {
+    isLogin()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userToken = getToken()
@@ -42,7 +45,7 @@ const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const result =  await AuthService.editProfile(userToken, data)
-        console.log(result)
+        
         if(result.status = 'success') {
             const Toast = Swal.mixin({
                 toast: true,
@@ -106,6 +109,12 @@ const Profile = () => {
         }
     };
 
+    function logoutButton() {
+        sessionStorage.removeItem('userToken')
+        dispatch(loginSlice(''))
+        navigate('/login')
+    }
+    
     return (
         <>
             <div className="h-auto bg-transparent">
@@ -113,7 +122,8 @@ const Profile = () => {
                     <div className="w-full lg:w-10/12 md:w-10/12 sm:w-10/12 mt-10 flex justify-center ">
                         <div className="grid gap-1 ">
                             <div className="mt-3">
-                                <img src={profile.profile_image} className="block mx-auto h-24" />
+                                <img src={profile.profile_image != 'https://minio.nutech-integrasi.app/take-home-test/null' ? profile.profile_image : profile_user} className="block mx-auto h-24" />
+
                                 <AiOutlineEdit className="icon_edit_user cursor-pointer" onClick={() => showUpdateFoto(!showFile)} /> 
                             </div>
                             <h2 className="text-2xl font-bold font-sans my-0">{profile.first_name+ ' '+ profile.last_name}</h2>
@@ -210,6 +220,7 @@ const Profile = () => {
                             <div className="w-full lg:w-5/12 md:w-5/12 sm:w-5/12 mt-5">
                                 <button
                                     type="button"
+                                    onClick={() => logoutButton()}
                                     className="flex w-full justify-center rounded bg-red-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                                 >
                                     Logout

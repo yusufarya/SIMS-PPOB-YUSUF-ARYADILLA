@@ -24,6 +24,7 @@ const History = () => {
     }
 
     const transaction = useSelector((state) => state.transactionHistory.transaction);
+
     return (
         <>
             <div className="flex h-auto bg-transparent justify-center">
@@ -36,6 +37,9 @@ const History = () => {
                     <div className="col-span-12">
                     {
                         transaction?.map((item, idx) => {
+                            const date = new Date(item.created_on); // Your date here
+                            const dateCreated = date.toLocaleDateString('en-GB');
+                            const timer = date.toLocaleTimeString();;
                             return(
                                 <div key={idx}>
                                     <div className="border-2 border-gray-300 shadow-sm rounded-md mb-5">
@@ -47,7 +51,7 @@ const History = () => {
                                                     {item.transaction_type == "TOPUP" ? "+ " : "- "}
                                                     {item.total_amount.toLocaleString('en-US')}
                                                 </div>
-                                                <div className="text-sm">{item.created_on}</div>
+                                                <div className="text-xs mt-2 text-gray-500">{dateCreated+' '+timer}</div>
                                             </div>
                                             <div className="text-right my-5 me-3 text-gray-500 font-sans">
                                             {item.description}
