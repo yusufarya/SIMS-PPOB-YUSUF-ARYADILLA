@@ -1,0 +1,33 @@
+.icon_input {
+  position: relative;
+  bottom: -26.6px;
+  left: 8px;
+  color: rgb(145, 145, 145);
+  margin-top: -10px;
+}
+
+.icon_input_eye {
+  position: relative;
+  bottom: -26.6px;
+  right: 10px;
+  color: rgb(145, 145, 145);
+  margin-top: -10px;
+}
+
+.icon_edit_user {
+  position: relative;
+  float: right;
+  bottom: 25px;
+  left: -34px;
+  border-radius: 50%;
+  border: 1px solid rgb(187, 187, 187);
+  color: rgb(115, 115, 115);
+  font-size: 24px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="password1"] {
+  padding-left: 30px;
+}
