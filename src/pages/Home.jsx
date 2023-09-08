@@ -16,7 +16,7 @@ const Home = () => {
                                 <div key={idx}>
                                     <NavLink to={
                                             {
-                                                pathname: service.service_name == 'Listrik' ? '/listrik' : '',
+                                                pathname: '/payment'
                                             }}
                                             state={{service:service}}
                                          >

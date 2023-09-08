@@ -30,7 +30,7 @@ const Profile = () => {
     useEffect(() => {
         dispatch(profileSlice(userToken))
         setData(dataUser)
-    }, [data])
+    }, [])
 
     function handleInput(e) {
         setData({...data, [e.target.name]: e.target.value} ) 
@@ -65,8 +65,7 @@ const Profile = () => {
             })
             
             setTimeout(() => {
-                window.location.reload();
-                navigate('/akun')
+                navigate('/')
             }, 1000)
         }
     }
@@ -147,6 +146,7 @@ const Profile = () => {
                             <AiOutlineMail className={onFocus == 'email' ? 'icon_input text-black' : 'icon_input text-gray-500 '}/>
                             <input
                                 value={data.email}
+                                onChange={(e) => handleInput(e)}
                                 id="email"
                                 name="email"
                                 type="email"

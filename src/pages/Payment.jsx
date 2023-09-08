@@ -6,7 +6,7 @@ import { NumericFormat } from 'react-number-format';
 import { useLocation } from "react-router-dom";
 import logo from "../assets/img/Logo.png"
 
-const Listrik = () => {
+const Payment = () => {
     
     const location = useLocation();
     const { state } = location;
@@ -20,7 +20,7 @@ const Listrik = () => {
             imageHeight: 80,
             imageAlt: 'Logo',
             html:
-            'Beli saldo listrik senilai ? '+ '<br/>'+
+            'Bayar '+state.service.service_name+' senilai ? '+ '<br/>'+
             `<b style="font-size: 34px;">${nilai}</b> <br/>`,
             showConfirmButton: false,
             showCancelButton: true,
@@ -35,7 +35,7 @@ const Listrik = () => {
 
     const nextBayar = async () => {
         const nilai = state.service.service_tariff.toLocaleString('en-US');
-        const result = await AuthService.listrik(userToken, state.service.service_code)
+        const result = await AuthService.payment(userToken, state.service.service_code)
         if(result.status == 'success') {
             Swal.fire({
                 icon: 'success',
@@ -43,17 +43,16 @@ const Listrik = () => {
                 html:
                 `<b style="font-size: 34px;">${nilai}</b> <br/>` +
                 result.response.message+ '<br/><br/>'+
-                '<a href="/home" style="color: #b8022f; margin : 5px 0;">Kembali Ke Beranga</a> <br/>',
+                '<a href="/home" style="color: #b8022f; margin : 5px 0;">Kembali Ke Beranda</a> <br/>',
                 showConfirmButton: false,
             })
         } else {
             Swal.fire({
                 icon: 'error',
                 html:
-                'Pembayaran listrik sebesar'+ '<br/>'+
-                `<b style="font-size: 34px;">${nilai}</b> <br/><br/>`+
-                `Gagal<br/> <br/>` +
-                '<a href="/home" style="color: #b8022f; margin : 5px 0;">Kembali Ke Beranga</a> <br/>',
+                'Proses Pembayaran Gagal'+ '<br/>'+
+                `Hubungi Administrator<br/> <br/>` +
+                '<a href="/home" style="color: #b8022f; margin : 5px 0;">Kembali Ke Beranda</a> <br/>',
                 showConfirmButton: false,
             })
         }
@@ -66,7 +65,7 @@ const Listrik = () => {
                     <h2 className="text-md font-sans">Pembayaran</h2>
                     <h2 className="text-xl font-sans font-bold">
                         <img src={state.service.service_icon} className="inline h-9 pb-1 me-2" />
-                        {state.service.service_name} Prabayar
+                        {state.service.service_name}
                     </h2>
                 </div>
             </div>
@@ -100,4 +99,4 @@ const Listrik = () => {
     )
 }
 
-export default Listrik   
+export default Payment   

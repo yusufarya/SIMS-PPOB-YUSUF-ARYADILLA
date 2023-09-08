@@ -5,7 +5,7 @@ import Register from "./pages/Register"
 import Home from "./pages/Home"
 import { getToken } from "./authorization/getToken"
 import Topup from "./pages/Topup"
-import Listrik from "./pages/Listrik"
+import Payment from "./pages/Payment"
 import History from "./pages/History"
 import Profile from "./pages/Profile"
 
@@ -23,7 +23,7 @@ function App() {
                 <Route path="/home" element={<Home/>} />
                 <Route path="/tupup" element={<Topup/>} />
                 <Route path="/transaction" element={<History/>} />
-                <Route path="/listrik" element={<Listrik/>} />
+                <Route path="/payment" element={<Payment/>} />
                 <Route path="/akun" element={<Profile/>} />
                 <Route path="/" element={userToken != null ? <Navigate to="/home" /> : <Navigate to="/login" /> } />
             </Routes>

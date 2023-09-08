@@ -96,7 +96,7 @@ const topup = async (userToken, nominal) => {
       });
 };
 
-const listrik = async (userToken, code) => {
+const payment = async (userToken, code) => {
   const headers = { 'Authorization': `Bearer ${userToken}` };
   return await axios
       .post(API_URL + "transaction", {service_code : code}, { headers })
@@ -136,7 +136,7 @@ const authService = {
   banner,
   balance,
   topup,
-  listrik,
+  payment,
   transactionHistory,
   logout,
 };
