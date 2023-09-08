@@ -2,13 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import profile_user from "../assets/img/default_user.png"
 import { AiOutlineEdit, AiOutlineMail, AiOutlineUser } from "react-icons/ai";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import AuthService from "../services/authService";
 import { getToken } from "../authorization/getToken";
 import { useNavigate } from "react-router-dom";
 import { profileSlice } from "../redux/slices/profile";
 import Swal from "sweetalert2";
-import { loginSlice } from "../redux/slices/auth";
 import isLogin from "../authorization/cek-login";
 
 const Profile = () => {
@@ -110,8 +109,7 @@ const Profile = () => {
 
     function logoutButton() {
         sessionStorage.removeItem('userToken')
-        dispatch(loginSlice(''))
-        navigate('/login')
+        window.location.reload();
     }
     
     return (

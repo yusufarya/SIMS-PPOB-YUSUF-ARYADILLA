@@ -50,9 +50,9 @@ const Payment = () => {
             Swal.fire({
                 icon: 'error',
                 html:
-                'Proses Pembayaran Gagal'+ '<br/>'+
-                `Hubungi Administrator<br/> <br/>` +
-                '<a href="/home" style="color: #b8022f; margin : 5px 0;">Kembali Ke Beranda</a> <br/>',
+                'Pembayaran Gagal'+ '<br/>'+
+                result.response.message+ '<br/> <br/>' +
+                '<a href="/topup" style="color: #b8022f; margin : 5px 0;">Topup sekarang</a> <br/>',
                 showConfirmButton: false,
             })
         }

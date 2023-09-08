@@ -104,7 +104,7 @@ const payment = async (userToken, code) => {
         return {"status": "success", response: response.data};
       })
       .catch((error) => {
-        return {"status": "failed", response: error.response};
+        return {"status": "failed", response: error.response.data};
       });
 };
 

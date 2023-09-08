@@ -15,7 +15,7 @@ const Topbar = () => {
                     </NavLink>
                 </div>
                 <div className="flex justify-end gap-11">
-                    <NavLink to="/tupup" className={`text-gray-900 font-sans font-semibold active:text-red-600 ${location.pathname == '/tupup' ? 'text-red-500' : ''}`}>
+                    <NavLink to="/topup" className={`text-gray-900 font-sans font-semibold active:text-red-600 ${location.pathname == '/tupup' ? 'text-red-500' : ''}`}>
                         Top Up 
                     </NavLink>
                     <NavLink to="/transaction" className={`text-gray-900 font-sans font-semibold active:text-red-600 ${location.pathname == '/transaction' ? 'text-red-500' : ''}`}>

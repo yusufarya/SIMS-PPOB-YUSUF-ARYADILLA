@@ -7,8 +7,10 @@ import bg_saldo from "../assets/img/bg_saldo.png"
 import { getToken } from "../authorization/getToken";
 import { profileSlice } from "../redux/slices/profile";
 import DataRedux from "../utils/data";
+import isLogin from "../authorization/cek-login";
 
 const Headers = () => {
+    isLogin()
     
     DataRedux()
     const section_saldo = {
