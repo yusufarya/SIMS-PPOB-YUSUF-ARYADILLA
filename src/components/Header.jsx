@@ -6,11 +6,11 @@ import profile_user from "../assets/img/default_user.png"
 import bg_saldo from "../assets/img/bg_saldo.png"
 import { getToken } from "../authorization/getToken";
 import { profileSlice } from "../redux/slices/profile";
-import { Navigate } from "react-router-dom";
-import isLogin from "../authorization/cek-login";
+import DataRedux from "../utils/data";
 
 const Headers = () => {
-    isLogin()
+    
+    DataRedux()
     const section_saldo = {
         backgroundImage: `url(${bg_saldo})`,
     }

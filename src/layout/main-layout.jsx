@@ -24,7 +24,7 @@ const Main_layout = ({children}) => {
                         <hr/>
                         <div className="h-20 pt-5">
                             <img src={logo} className="inline h-5 pb-0.5 mr-2 saturate-50" />
-                            SIMS PPOB &copy; <a href="https://yusufarya.my.id" className="text-blue-900">Yusuf Aryadilla</a> 
+                            SIMS PPOB &copy; <a href="https://yusufarya.my.id" target="_blank" className="text-blue-900">Yusuf Aryadilla</a> 
                         </div>
                     </footer>
                 </div>

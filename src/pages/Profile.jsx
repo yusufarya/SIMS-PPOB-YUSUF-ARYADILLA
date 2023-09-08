@@ -16,23 +16,21 @@ const Profile = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userToken = getToken()
-    useEffect(() => {
-        dispatch(profileSlice(userToken))
-    })
+
     const profile = useSelector((state) => state.profile.profile);
+
     const [onFocus, setOnFocus] = useState(false)
     function handleFocus(e) {
         setOnFocus(e.target.name)
     }
-
-    console.log(profile)
     
     const dataUser = {email : profile.email, first_name: profile.first_name, last_name: profile.last_name}
     const [data, setData] = useState(dataUser)
-
+    
     useEffect(() => {
+        dispatch(profileSlice(userToken))
         setData(dataUser)
-    }, [])
+    }, [data])
 
     function handleInput(e) {
         setData({...data, [e.target.name]: e.target.value} ) 
@@ -149,8 +147,6 @@ const Profile = () => {
                             <AiOutlineMail className={onFocus == 'email' ? 'icon_input text-black' : 'icon_input text-gray-500 '}/>
                             <input
                                 value={data.email}
-                                onChange={(e) => handleInput(e)}
-                                onFocus={(e) => handleFocus(e)}
                                 id="email"
                                 name="email"
                                 type="email"

@@ -1,5 +1,3 @@
-import { useState } from "react"
-import DataRedux from "../utils/data"
 import { AiOutlineCreditCard } from "react-icons/ai"
 import AuthService from "../services/authService";
 import { getToken } from "../authorization/getToken";
@@ -12,8 +10,6 @@ const Listrik = () => {
     
     const location = useLocation();
     const { state } = location;
-    console.log(state.service);
-    DataRedux()
 
     const userToken = getToken()
     const handleBayar = async () => {

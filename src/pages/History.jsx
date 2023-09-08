@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import DataRedux from "../utils/data"
 import { useEffect, useState } from "react";
 import { transactionSlice } from "../redux/slices/transaction";
 import { getToken } from "../authorization/getToken";
 
 const History = () => {
-    DataRedux()
+
     const dispatch = useDispatch() 
     const [offset, setOffset] = useState(0);
     const [limit, setLimit] = useState(5);

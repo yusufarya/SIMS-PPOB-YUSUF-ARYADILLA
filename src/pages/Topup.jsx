@@ -1,15 +1,13 @@
 import { useState } from "react"
-import DataRedux from "../utils/data"
 import { AiOutlineCreditCard } from "react-icons/ai"
 import AuthService from "../services/authService";
 import { getToken } from "../authorization/getToken";
 import Swal from "sweetalert2";
 import { NumericFormat } from 'react-number-format';
+import isLogin from "../authorization/cek-login";
 
 const Topup = () => {
-    
-    DataRedux()
-
+    isLogin()
     const [nominal, setNominal] = useState(0)
 
     function handleInput(e) {
@@ -74,11 +72,11 @@ const Topup = () => {
                             className="px-2 block w-full rounded border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6 bg-white"
                         />
                     </div>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 10000 && 'bg-red-400 text-stone-50'}`}
                     onClick={() => clickNominal(10000)}>Rp. 10.000</button>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 20000  && 'bg-red-400 text-stone-50 border-2 border-red-500'}`}
                     onClick={() => clickNominal(20000)}>Rp. 20.000</button>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 50000  && 'bg-red-400 text-stone-50 border-2 border-red-500'}`}
                     onClick={() => clickNominal(50000)}>Rp. 50.000</button>
                     <div className="col-span-7">
                         <button
@@ -88,11 +86,11 @@ const Topup = () => {
                         > Top Up
                         </button>
                     </div>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 100000 && 'bg-red-400 text-stone-50 border-2 border-red-500'}`}
                     onClick={() => clickNominal(100000)}>Rp. 100.000</button>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 250000 && 'bg-red-400 text-stone-50 border-2 border-red-500'}`}
                     onClick={() => clickNominal(250000)}>Rp. 250.000</button>
-                    <button className="col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1"
+                    <button className={`col-span-1 border-2 border-gray-300 rounded h-9 mt-1.5 text-center pt-1 ${nominal == 500000 && 'bg-red-400 text-stone-50 border-2 border-red-500'}`}
                     onClick={() => clickNominal(500000)}>Rp. 500.000</button>
                 </div>
             </div>

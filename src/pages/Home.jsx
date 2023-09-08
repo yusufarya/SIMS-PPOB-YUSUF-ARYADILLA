@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
-import DataRedux from "../utils/data"
 import { NavLink } from "react-router-dom";
 
 const Home = () => {
-    DataRedux()
 
     const services = useSelector((state) => state.service.service);
     const banner = useSelector((state) => state.banner.banner);
-    // console.log(banner)
+    
     return (
         <>
             <div className="flex h-auto bg-transparent justify-center">
