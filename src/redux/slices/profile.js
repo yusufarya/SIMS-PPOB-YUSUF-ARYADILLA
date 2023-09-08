@@ -25,8 +25,7 @@ export const profileSlice = createAsyncThunk(
     }
 );
 
-const initialState = profile 
-? {profile} : {};
+const initialState = profile;
 
 const userDataSlice = createSlice({
     name: "profile",

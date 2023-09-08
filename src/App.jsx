@@ -15,7 +15,7 @@ function App() {
   
   return (
     <>
-      <Router>
+      <Router >
         <Main_layout>
             <Routes>
                 <Route path="/login" element={<Login/>} />

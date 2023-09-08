@@ -24,6 +24,8 @@ const Profile = () => {
     function handleFocus(e) {
         setOnFocus(e.target.name)
     }
+
+    console.log(profile)
     
     const dataUser = {email : profile.email, first_name: profile.first_name, last_name: profile.last_name}
     const [data, setData] = useState(dataUser)
